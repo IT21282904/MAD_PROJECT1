@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MAD_PROJECT"
+        tools:targetApi="31">
+        <activity
+            android:name=".Register"
+            android:exported="false" />
+        <activity
+            android:name=".LocationR"
+            android:exported="false" />
+        <activity
+            android:name=".DriverR"
+            android:exported="false" />
+        <activity
+            android:name=".AddCard"
+            android:exported="false" />
+        <activity
+            android:name=".VehicleR"
+            android:exported="false" />
+        <activity
+            android:name=".PaymentR"
+            android:exported="false" />
+        <activity
+            android:name=".Payments"
+            android:exported="false" />
+        <activity
+            android:name=".Location_UD"
+            android:exported="false" />
+        <activity
+            android:name=".Vehicle_Select"
+            android:exported="false" />
+        <activity
+            android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".Location"
+            android:exported="false" />
+        <activity
+            android:name=".Driver_select"
+            android:exported="false" />
+        <activity
+            android:name=".jg"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
