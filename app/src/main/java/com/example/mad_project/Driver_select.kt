@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
@@ -16,6 +17,8 @@ class Driver_select : AppCompatActivity() {
     lateinit var Age:String
     lateinit var Gender: String
     lateinit var  database: FirebaseDatabase
+    lateinit var bttn: Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         database = Firebase.database("https://mad-project-f38bd-default-rtdb.asia-southeast1.firebasedatabase.app/")
         super.onCreate(savedInstanceState)

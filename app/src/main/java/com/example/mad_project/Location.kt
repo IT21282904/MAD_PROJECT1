@@ -7,12 +7,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Button
 import android.widget.Spinner
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.lang.Integer.*
+import kotlin.properties.Delegates
 
 class Location : AppCompatActivity() {
     lateinit var location: String
@@ -20,12 +22,19 @@ class Location : AppCompatActivity() {
     lateinit var malePassenge: String
     lateinit var femalePassenge: String
     lateinit var  database:FirebaseDatabase
+    var edi by Delegates.notNull<Boolean>()
+    lateinit var bttn:Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
         database = Firebase.database("https://mad-project-f38bd-default-rtdb.asia-southeast1.firebasedatabase.app/")
 
+        edi = intent.getBooleanExtra("edi",false)
+        if (edi){
+            bttn=findViewById(R.id.textView16)
+            bttn.setText("edit data")
+        }
 
         val spinner: Spinner = findViewById(R.id.spinner2)
 
@@ -132,16 +141,28 @@ class Location : AppCompatActivity() {
     }
     fun btnClk(v :View) {
         var lID: Int
+        var kei =" "
 
         val sharedPref = this.getSharedPreferences("myPrefs", Context.MODE_PRIVATE)
         val editor = sharedPref.edit()
+        if(edi){
+            lID = sharedPref.getInt("ID",1)-1
+            kei = "L0$lID"
+        }
+        else{
         lID = sharedPref.getInt("ID",1)
+        kei = "L0$lID"
+        lID++}
         var lData = LocationDat(location,destination,malePassenge,femalePassenge)
 
-        var kei = "L0$lID"
-        lID++
+
         database.getReference("Location").child(kei).setValue(lData)
         editor.putInt("ID",lID)
+        editor.putString("lc",location)
+        editor.putString("dD",destination)
+        editor.putInt("mP",malePassenge.toInt())
+        editor.putInt("fP",femalePassenge.toInt())
+
         editor.apply()
 
         val intnt : Intent = Intent(this, LocationR::class.java)
